@@ -234,7 +234,7 @@ class RecurrentPPO(OnPolicyAlgorithm):
         lstm_states = deepcopy(self._last_lstm_states)
 
         while n_steps < n_rollout_steps:
-            actions, values, log_probs, new_obs, rewards, dones, infos, lstm_states = self._step(env, n_steps)
+            actions, values, log_probs, new_obs, rewards, dones, infos, lstm_states = self._step(env, n_steps, lstm_states)
             self.last_step_results = (new_obs, rewards, dones, infos, lstm_states)
             self.num_steps += 1
             self.num_timesteps += env.num_envs
